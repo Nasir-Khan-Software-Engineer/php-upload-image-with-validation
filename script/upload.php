@@ -35,6 +35,27 @@ $_SESSION['message'] = "";
 			return header("Location: ../index.php");
 		}
 
+
+		// image height, width validation
+		$width_height = getimagesize($main_file);
+		$width  = $width_height[0];
+		$height = $width_height[1];
+
+		// if($width != 300 && $height != 300){
+		// 	$_SESSION['message'] = "Please Upload 300x300 pixel Image.";
+		// 	return header("Location: ../index.php");
+		// }
+
+		// image size(MB/KB) validation
+		$image_size = $file['size']; // size in byte
+		$MB_2 = 2000000; // 2 MB
+
+		if($image_size > $MB_2){
+			$_SESSION['message'] = "Image is too large. Please upload <= 2MB image.";
+			return header("Location: ../index.php");
+		}
+
+
 		// getting extention
 		$ext = explode(".", $name);
 		$ext = end($ext);
@@ -49,7 +70,7 @@ $_SESSION['message'] = "";
 		// upload
 		move_uploaded_file($main_file,$new_upload_file);
 
-		$_SESSION['message'] = "Success";
+		$_SESSION['message'] = "Success ".$image_size;
 		return header("Location: ../index.php");
 	}
 
