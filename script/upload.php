@@ -70,7 +70,7 @@ $_SESSION['message'] = "";
 		// upload
 		move_uploaded_file($main_file,$new_upload_file);
 
-		$_SESSION['message'] = "Success ".$image_size;
+		$_SESSION['message'] = "Success";
 		return header("Location: ../index.php");
 	}
 
