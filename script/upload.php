@@ -41,10 +41,10 @@ $_SESSION['message'] = "";
 		$width  = $width_height[0];
 		$height = $width_height[1];
 
-		// if($width != 300 && $height != 300){
-		// 	$_SESSION['message'] = "Please Upload 300x300 pixel Image.";
-		// 	return header("Location: ../index.php");
-		// }
+		if($width != 300 && $height != 300){
+		 	$_SESSION['message'] = "Please Upload 300x300 pixel Image.";
+			return header("Location: ../index.php");
+		 }
 
 		// image size(MB/KB) validation
 		$image_size = $file['size']; // size in byte
